@@ -5,4 +5,4 @@ def indexPageView(request) :
     return HttpResponse("This is our main page talking about Phishing and Hacking")
 
 def formPageView(request) : 
-    return HttpResponse("This is our forms page")
+    return HttpResponse("Forms")
