@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def indexPageView(request) : 
-    return HttpResponse("This is our main page talking about Phishing and Hacking")
-
+    return render(request, 'papahapp/index.html')
 def formPageView(request) : 
-    return HttpResponse("This is our forms page")
+     return render(request, 'papahapp/form.html')#28.08 on video
