@@ -6,3 +6,4 @@ def indexPageView(request) :
 
 def formPageView(request) : 
     return HttpResponse("This is a page with the form that people can fill out to report phishing.")
+
