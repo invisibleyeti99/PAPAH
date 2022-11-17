@@ -44,7 +44,7 @@ class Breach(models.Model) :
         self.state = self.state.upper()
         self.email = self.email.upper()
         self.breach_type = self.breach_type.upper()
-        super(Customer, self).save() # Call the "real" save() method
+        super(Breach, self).save() # Call the "real" save() method
 
 #     @property
 #     def return_date(self) :

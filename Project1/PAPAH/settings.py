@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'PAPAH.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'Papah',
+    'NAME': 'papah',
     'USER': 'postgres',
-    'PASSWORD': 'Culasi1541?',
+    'PASSWORD': 'tk313131',
     'HOST': 'localhost',
-    'PORT': '5433'
+    'PORT': '5432'
     }
 } 
 
