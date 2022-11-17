@@ -14,17 +14,37 @@ from django.db import models
 #     def __str__(self) :
 #         return (self.description)
 
-# class Destination(models.Model) :
-#     trip_category = models.OneToOneField(TripCategory, models.CASCADE)
-#     title = models.CharField(max_length=50)
-#     days = models.IntegerField(default=0)
-#     cost = models.DecimalField(max_digits=8, decimal_places=2) 
-#     main_photo = models.ImageField(upload_to='photos')          
-#     is_active = models.BooleanField(default=True)
-#     leave_date = models.DateField(default=datetime.today, blank=True)
+class Breach(models.Model) :
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    breach_num = models.IntegerField(default=0)
+    street_address = models.CharField(max_length = 100)
+    apt_number = models.CharField(max_length = 5) 
+    city = models.CharField(max_length = 80)
+    state_abbreviation = models.CharField(max_length = 2)
+    zipcode = models.IntegerField(default=0)
+    email = models.EmailField()          
+    phone = models.CharField(max_length=10)
+    breach_type = models.CharField(max_length=20)
+    breach_description = models.CharField(max_length = 1000)
+    breach_datetime = models.DateTimeField()
 
-#     def __str__ (self):
-#         return (self.title)
+    def __str__(self):
+                    return (self.full_name)
+                
+    @property
+    def full_name(self):
+        return '%s %s' % (self.first_name, self.last_name)
+    
+    def save(self):
+        self.first_name = self.first_name.upper()
+        self.last_name = self.last_name.upper()
+        self.street_address = self.street_address.upper()
+        self.city = self.city.upper()
+        self.state = self.state.upper()
+        self.email = self.email.upper()
+        self.breach_type = self.breach_type.upper()
+        super(Customer, self).save() # Call the "real" save() method
 
 #     @property
 #     def return_date(self) :
