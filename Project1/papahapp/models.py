@@ -27,7 +27,6 @@ class Breach(models.Model) :
     phone = models.CharField(max_length=10)
     breach_type = models.CharField(max_length=20)
     breach_description = models.CharField(max_length = 1000)
-    breach_datetime = models.DateTimeField()
 
     def __str__(self):
                     return (self.full_name)
@@ -41,10 +40,10 @@ class Breach(models.Model) :
         self.last_name = self.last_name.upper()
         self.street_address = self.street_address.upper()
         self.city = self.city.upper()
-        self.state = self.state.upper()
+        self.state_abbreviation = self.state_abbreviation.upper()
         self.email = self.email.upper()
         self.breach_type = self.breach_type.upper()
-        super(Customer, self).save() # Call the "real" save() method
+        super(Breach, self).save() # Call the "real" save() method
 
 #     @property
 #     def return_date(self) :

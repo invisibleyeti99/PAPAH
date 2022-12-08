@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'papahapp.apps.PapahappConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -79,11 +80,11 @@ WSGI_APPLICATION = 'PAPAH.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'Papah',
+    'NAME': 'papah',
     'USER': 'postgres',
-    'PASSWORD': 'Culasi1541?',
+    'PASSWORD': '9991',
     'HOST': 'localhost',
-    'PORT': '5433'
+    'PORT': '5432'
     }
 } 
 

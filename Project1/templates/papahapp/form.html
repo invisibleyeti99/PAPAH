@@ -2,6 +2,7 @@
 {% load static%}
 
 {%block content%}
+{% load crispy_forms_tags %}
 <!-- Image element - set the background image for the header in the line below-->
 <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/gp8BLyaTaA0/1200x800')">
     <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
@@ -9,13 +10,21 @@
 </div>
 <!-- Content section-->
 <section class="py-5">
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h2>Form</h2>
-                <p class="lead">Here is where are form will lie giving users the ability to change update add subtract whatver</p>
+    <div class = "row mt-3 pt-3">
+        <div style="padding-left: 5%; padding-top:3%" class = "col-md-4">
+            <h4 style='text-align:center;'>Add a Food Item</h4>
+            <div class = "border p-3">
+                
+                
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+                </form>
+                
             </div>
+           
         </div>
-    </div>
 </section>
 {%endblock%}
