@@ -11,8 +11,8 @@
 <!-- Content section-->
 <section class="py-5">
     <div class = "row mt-3 pt-3">
-        <div style="padding-left: 5%; padding-top:3%" class = "col-md-4">
-            <h4 style='text-align:center;'>Add a Food Item</h4>
+        <div style="text-align: center; height:auto; margin-left:auto; margin-right:auto;" class = "col-md-4">
+            <h4 style='text-align:center;'>Add a Hacking Record</h4>
             <div class = "border p-3">
                 
                 
@@ -20,11 +20,56 @@
                 <form method="POST">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input class = 'btn btn-success btn-block' type='submit' value = 'Add'>
+                    <input class = 'btn btn-success btn-block' type='submit' value='Add'>
                 </form>
                 
             </div>
            
         </div>
 </section>
+
+<div style = 'margin:auto;  text-align: center;'>
+    <label style="text-align:center"> <strong> <font size="+2">All Hacking Records</font></strong>
+        <table class="center styled-table" style='width:auto'>
+            <tr class="active-row">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Breach Number</th>
+                <th>Street Address</th>
+                <th>Apt Number</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Breach Type</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+
+            {% for order in breach %}
+            
+            <tr class="active-row" style='width:90%'> 
+                <td>{{order.first_name}}</td>
+                <td>{{order.last_name}}</td>
+                <td>{{order.breach_num}}</td>
+                <td>{{order.street_address}}</td>
+                <td>{{order.apt_number}}</td>
+                <td>{{order.city}}</td>
+                <td>{{order.state_abbreviation}}</td>
+                <td>{{order.zipcode}}</td>
+                <td>{{order.email}}</td>
+                <td>{{order.phone}}</td>
+                <td>{{order.breach_type}}</td>
+                <td>{{order.breach_description}}</td>
+                <td><a class="btn btn-success btn-block" style="line-height:0.85;" href="{% url 'updatefood' order.id %}">Update</a></td>
+                <td><a class="btn btn-success btn-block" style="line-height:0.85;" href="{% url 'delete' order.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </label>
+</div>
+<br><br>
 {%endblock%}
