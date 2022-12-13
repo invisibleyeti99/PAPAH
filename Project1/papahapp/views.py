@@ -1,11 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import *
 from .models import *
 
 def indexPageView(request) : 
     data = Breach.objects.all()
-    #breachs = request.user.breachs_set.all() dunno why this isn't working, but we have to define breach to be able to use it in the context
     if request.method == 'POST':
         form = BreachForm(request.POST,)
         if form.is_valid():
@@ -17,12 +16,11 @@ def indexPageView(request) :
         'form': form,
         #'breachs' : breachs,
     }
-    return render(request, 'papahapp/index.html')
+    return render(request, 'papahapp/index.html',context)
 
 
 def formPageView(request) : 
     data = Breach.objects.all()
-    #breachs = request.user.breachs_set.all() dunno why this isn't working, but we have to define breach to be able to use it in the context
     if request.method == 'POST':
         form = BreachForm(request.POST,)
         if form.is_valid():
@@ -36,3 +34,10 @@ def formPageView(request) :
     }
     return render(request, 'papahapp/form.html', context)
 
+def deletePageView(request, pk):
+    breach = Breach.objects.get(id=pk)
+    if request.method == 'POST':
+        breach.delete()
+        return redirect('index')
+    context = {'item' : breach}
+    return render(request, 'papahapp/delete.html', context)

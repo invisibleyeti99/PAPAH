@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block navbar%}
+
+{% comment %} 
+This page allows users to delete their data of entered foods
+{% endcomment %}
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style = "background-color : #242F36">
+    <div class="container">
+        <!-- <a class="navbar-brand" href="#!">Start Bootstrap</a> -->
+        <span class="navbar-brand"><img src="/static/assets/img/logo.jpg"style="height:10%; width:50%" alt="logo"></span
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {%if request.user.is_staff %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'editdelete' %}">Edit Delete</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'newuser' %}">New User</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'form' %}">Form</a></li>
+
+                {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'user'%}">Dashboard</a></li>
+  
+                <li class="nav-item"><a class="nav-link" href="{% url 'history' %}">History</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'account' %}">Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{%endblock%}
+{% block content %}
+
+<div style ="padding-top: 10%;
+padding-bottom: 15%;
+padding-left:auto;
+padding-right:auto;
+text-align:center;" class="box center">
+
+    <form action="{% url 'delete' item.id %}" method='POST'>
+        <br><br>
+        <h2>Are you sure you want to delete {{item}}?</h2>
+        <br><br>
+        {% csrf_token %}
+        <div>   
+        <input class="btn btn-success btn-block" style="margin-right: auto; margin-left:auto; padding-left:40px; padding-right:40px;" type="submit" name="Confirm">
+        <a class="btn btn-success btn-block" style="margin-left:auto; margin-right:auto; padding-left:40px; padding-right:40px;" href=" {% url 'index' %}">Cancel</a>
+    </div>
+  </div>
+
+{% endblock %}
