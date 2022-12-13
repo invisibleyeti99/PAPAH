@@ -122,7 +122,7 @@
                         <td>{{order.breach_num}}</td>
                         <td>{{order.breach_type}}</td>
                         <td>{{order.breach_description}}</td>
-                        <td><a class="btn btn-success btn-block" style="line-height:0.85;" href="">Update</a></td>
+                        <td><a class="btn btn-success btn-block" style="line-height:0.85;" href="{% url 'update' order.id %}">Update</a></td>
                         <td><a class="btn btn-success btn-block" style="line-height:0.85;" href="{% url 'delete' order.id %}">Delete</a></td>
 
                     </tr>

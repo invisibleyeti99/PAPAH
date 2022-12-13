@@ -41,3 +41,15 @@ def deletePageView(request, pk):
         return redirect('index')
     context = {'item' : breach}
     return render(request, 'papahapp/delete.html', context)
+
+
+def updatePageView(request, pk):
+    breach = Breach.objects.get(id=pk)
+    form = BreachForm(instance = breach)
+    if request.method == 'POST':
+        form = BreachForm(request.POST, instance=breach)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    context = {'form': form}
+    return render(request, 'papahapp/update.html', context)
